@@ -29,26 +29,6 @@
         Weather Dashboard
     </header>
     <main class="container">
-        <!-- <div>
-            <div class="search-bar input-group">
-                <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" />
-                    <label class="form-label" for="form1">San Diego</label>
-                </div>
-                <button type="button" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-            <ul id="search-history" class="search-history"></ul>
-        </div>
-        <div class="weatherinfo">
-            <div class="countryinfo">
-                <p>box</p> 
-            </div>
-            <div class="daysahead">
-                <p>box</p>
-            </div>
-        </div> -->
         <div class="container-fluid px-1 px-sm-3 py-5 mx-auto">
             <div class="row d-flex justify-content-center">
                 <div class="row card0">
@@ -56,15 +36,13 @@
 
                     <div class="card2 col-lg-4 col-md-5">
                         <div class="row px-3">
-                            <input type="text" name="location" placeholder="Another location" class="mb-5">
+                            <input type="text" id="input" name="location" placeholder="Another location" class="mb-5">
                             <button class="fa fa-search mb-5 mr-0 text-center"></button>
                         </div>
                         <div class="mr-5">
-                            <p class="light-text suggestion">Birmingham</p>
-                            <p class="light-text suggestion">Manchester</p>
-                            <p class="light-text suggestion">New York</p>
-                            <p class="light-text suggestion">California</p>
-        
+                            <div class="search-history">
+
+                            </div>
                             <div class="line my-5"></div>
         
                             <p class="detail">Weather Details</p>
@@ -324,6 +302,11 @@
     <script src="./Assets/script/script.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous">
+    </script>
     <script src="./Assets/script/script.js"></script>
 </body>
 </html>
