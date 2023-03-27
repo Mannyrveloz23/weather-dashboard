@@ -1,7 +1,6 @@
 const searchBtn = $('.fa');
 const searchInput = $('#input');
-const searchHistory = $('.search-history');
-
+const searchHistory = $(".search-history")
 //display today's day
 $("#timedateEl").text(dayjs().format('M/D/YYYY'));
 
@@ -20,29 +19,33 @@ searchInput.on('keydown', function (event) {
 });
 
 const recentSearch = function() {
-    
     const searchTerm = searchInput.val();
 
-    // create a new li element with the search term as its text content
-    const newSearchItem = $('<p class="light-text suggestion">' + searchTerm + '</p>');
+    // create a new p element with the search term as its text content
+    const newSearchItem = $('<p class="light-text suggestion pe" id="p">' + searchTerm + '</p>');
 
-      // add an event listener to the new li element
-      newSearchItem.on('click', function() {
-        // retrieve the search term from the text content of the clicked li element
-        const clickedTerm = $(this).text();
-
-        // set the search input field value to the clicked term
-        searchInput.val(clickedTerm);
-
-        // perform the search again
-        // your code here
-    });
-
-    // append the new li element to the search history container
+    // append the new p element to the search history container
     searchHistory.append(newSearchItem);
+
+    // get the search history array from local storage or create a new empty array
+    const searchHistoryArr = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
+    // add the new search term to the array
+    searchHistoryArr.push(searchTerm);
+
+    // save the updated search history array to local storage
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
 
     // clear the search input field
     searchInput.val('');
+
+    // show the 5 most recent search terms in the search history container
+    searchHistory.empty();
+    for (let i = searchHistoryArr.length - 1; i >= Math.max(0, searchHistoryArr.length - 8); i--) {
+        const searchItem = $('<p class="light-text suggestion pe" id="p">' + searchHistoryArr[i] + '</p>');
+        searchHistory.append(searchItem);
+    }
+
 
     //current weather data
     $.ajax({
@@ -114,19 +117,16 @@ const recentSearch = function() {
             console.log(error)
         }
     });
-    
-    // add an event listener to the new li element
-    newSearchItem.on('click', function() {
-    // retrieve the search term from the text content of the clicked li element
-    const clickedTerm = $(this).text();
-  
-    // set the search input field value to the clicked term
-    searchInput.val(clickedTerm);
-  
-    // perform the search again with the clicked term
-    recentSearch(clickedTerm);
-  });
 
+
+    $(".pe").on('click', function() {
+        // get the search term from the clicked element and set it as the search input value
+        const searchTerm = $(this).text();
+        searchInput.val(searchTerm);
+
+        // call the recentSearch function to search for the weather data of the selected city
+        recentSearch();
+    });
 };
 
 // Set default search term to "Santiago de los Caballeros"
