@@ -105,8 +105,7 @@ const recentSearch = function() {
             $("#windEl").text(Math.round(data.wind.speed));
             $("#conditionEl").text(data.weather[0].description);
             $("#iconEl").attr({
-                src: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
-                class: ""
+                src: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             });
 
             console.log(data);
