@@ -6,8 +6,6 @@ const searchHistory = $('.search-history');
 $("#timedateEl").text(dayjs().format('M/D/YYYY'));
 
 
-
-
 searchBtn.on('click', function() {
     recentSearch();
 });
@@ -118,8 +116,22 @@ const recentSearch = function() {
         }
     });
     
+    // add an event listener to the new li element
+    newSearchItem.on('click', function() {
+    // retrieve the search term from the text content of the clicked li element
+    const clickedTerm = $(this).text();
+  
+    // set the search input field value to the clicked term
+    searchInput.val(clickedTerm);
+  
+    // perform the search again with the clicked term
+    recentSearch(clickedTerm);
+  });
 
 };
 
-
-
+// Set default search term to "Santiago de los Caballeros"
+searchInput.val("Santiago de los Caballeros");
+// Call the recentSearch function to perform the search
+recentSearch();
+  
