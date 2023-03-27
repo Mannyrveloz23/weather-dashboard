@@ -1,15 +1,15 @@
 const searchBtn = $('.fa');
 const searchInput = $('#input');
 const searchHistory = $(".search-history")
+
 //display today's day
 $("#timedateEl").text(dayjs().format('M/D/YYYY'));
 
 
 searchBtn.on('click', function() {
-    recentSearch();
+    recentSearchAndData();
 });
 
-// add an event listener to the search input field
 searchInput.on('keydown', function (event) {
     // check if the key pressed is the Enter key
     if (event.keyCode === 13) {
@@ -18,7 +18,7 @@ searchInput.on('keydown', function (event) {
     }
 });
 
-const recentSearch = function() {
+const recentSearchAndData = function() {
     const searchTerm = searchInput.val();
 
     // create a new p element with the search term as its text content
@@ -39,7 +39,7 @@ const recentSearch = function() {
     // clear the search input field
     searchInput.val('');
 
-    // show the 5 most recent search terms in the search history container
+    // show the 8 most recent search terms in the search history
     searchHistory.empty();
     for (let i = searchHistoryArr.length - 1; i >= Math.max(0, searchHistoryArr.length - 8); i--) {
         const searchItem = $('<p class="light-text suggestion pe" id="p">' + searchHistoryArr[i] + '</p>');
@@ -125,12 +125,11 @@ const recentSearch = function() {
         searchInput.val(searchTerm);
 
         // call the recentSearch function to search for the weather data of the selected city
-        recentSearch();
+        recentSearchAndData();
     });
 };
 
 // Set default search term to "Santiago de los Caballeros"
 searchInput.val("Santiago de los Caballeros");
-// Call the recentSearch function to perform the search
-recentSearch();
+
   
