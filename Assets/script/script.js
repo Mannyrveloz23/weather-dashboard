@@ -46,7 +46,7 @@ const recentSearch = function() {
 
     //current weather data
     $.ajax({
-        url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=22e14a0417438591076e071dfd21f126&units=imperial`,
+        url: `https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=22e14a0417438591076e071dfd21f126&units=imperial`,
         dataType: 'json',
         success: function(data) {
             //date elements for forecast of 5 days
@@ -94,7 +94,7 @@ const recentSearch = function() {
 
     //forecast data
     $.ajax({
-        url: `http://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=22e14a0417438591076e071dfd21f126&units=imperial`,
+        url: `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=22e14a0417438591076e071dfd21f126&units=imperial`,
         dataType: 'json',
         success: function(data) {
             //today's weather details 
